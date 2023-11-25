@@ -35,6 +35,9 @@ class Menu(Tk):
     def delete_game_frame(self):
         self.frames.pop("Game")
 
+    def pause_game_frame(self):
+        self.frames.pop("PauseMenu")
+
     def resize_window(self, width, height):
         # self.geometry(f"{width}x{height}")
         ws = self.winfo_screenwidth()
@@ -53,10 +56,10 @@ class MainMenu(Frame):
         label = Label(self, text="This is the MainMenu page")
         label.pack(side="top", fill="x", pady=10)
 
-        play_button = ImageButton(self, image_path="images\play button.gif", command=lambda: controller.show_frame("Game"))
+        play_button = ImageButton(self, image_path="images\play_button.gif", command=lambda: controller.show_frame("Game"))
         play_button.pack(pady=10)
 
-        quit_button = ImageButton(self, image_path="images\play button.gif", command=lambda: controller.show_frame("PauseMenu"))
+        quit_button = ImageButton(self, image_path="images\pause_menu\close_menu.gif", command=lambda: controller.show_frame("PauseMenu"))
         quit_button.pack(pady=10)
 
         # button1 = Button(
@@ -77,14 +80,18 @@ class PauseMenu(Frame):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
         self.controller = controller
-        label = Label(self, text="This is page 1")
+        label = Label(self, text="This is Pause menu")
         label.pack(side="top", fill="x", pady=10)
-        button = Button(
-            self,
-            text="Go to the MainMenu page",
-            command=lambda: controller.show_frame("MainMenu"),
-        )
-        button.pack()
+
+        quit_button = ImageButton(self, image_path="images\menu_button.gif", command=lambda: controller.show_frame("MainMenu"))
+        quit_button.pack(pady=10)
+
+        # button = Button(
+        #     self,
+        #     text="Go to the MainMenu page",
+        #     command=lambda: controller.show_frame("MainMenu"),
+        # )
+        # button.pack()
 
 class ImageButton(Frame):
     def __init__(self, parent, image_path, command=None):
