@@ -53,13 +53,22 @@ class MainMenu(Frame):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
         self.controller = controller
-        label = Label(self, text="This is the MainMenu page")
-        label.pack(side="top", fill="x", pady=10)
+
+        # bg_image = PhotoImage(file='images\opening_menu.gif')
+        # label = Label(self, text="This is the MainMenu page", image=bg_image)
+        # label.image = bg_image
+        # label.pack(side="top", fill="x", pady=10)
+
+        bg_image = PhotoImage(file='images\plan_main_menu.gif')
+        self.bg_label = Label(self, image=bg_image)
+        self.bg_label.image = bg_image
+        self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
         play_button = ImageButton(self, image_path="images\play_button.gif", command=lambda: controller.show_frame("Game"))
         play_button.pack(pady=10)
 
         quit_button = ImageButton(self, image_path="images\pause_menu\close_menu.gif", command=lambda: controller.show_frame("PauseMenu"))
+        #quit_button.place(relx=0.5, rely=0.6, anchor="center")
         quit_button.pack(pady=10)
 
         # button1 = Button(
