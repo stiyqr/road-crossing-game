@@ -65,10 +65,11 @@ class MainMenu(Frame):
         self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
         play_button = ImageButton(self, image_path="images\play_button.gif", command=lambda: controller.show_frame("Game"))
+        play_button.place(relx=0.5, rely=0.6, anchor="center")
         play_button.pack(pady=10)
 
         quit_button = ImageButton(self, image_path="images\pause_menu\close_menu.gif", command=lambda: controller.show_frame("PauseMenu"))
-        #quit_button.place(relx=0.5, rely=0.6, anchor="center")
+        quit_button.place(relx=0.5, rely=0.6, anchor="center")
         quit_button.pack(pady=10)
 
         # button1 = Button(
