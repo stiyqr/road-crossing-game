@@ -31,6 +31,7 @@ class Game(Frame):
         scoreboard = Scoreboard()
         car_manager = CarManager()
         player = Player(PLAYER_IMG)
+        self.controller.destroy()
 
         screen.listen()
         screen.onkeypress(player.move_forward, "w")
@@ -42,7 +43,7 @@ class Game(Frame):
         screen.onkeypress(player.move_right, "d")
         screen.onkeypress(player.move_right, "Right")
 
-        screen.onkeypress(self.controller.show_frame("PauseMenu"), "Escape")
+        screen.onkeypress(screen.bye, "Escape")
 
         # self.play_game()
         return {
@@ -85,4 +86,10 @@ class Game(Frame):
 
         # screen.bye()
         # self.controller.delete_game_frame()
-        self.controller.show_frame("PauseMenu")
+        #self.controller.show_frame("PauseMenu")
+
+    # def pause_game():
+    #     print("Pause game")
+    #     #self.screen.bye()
+    #     #self.controller.show_frame("MainMenu")
+    #     #self.controller.delete_game_frame()

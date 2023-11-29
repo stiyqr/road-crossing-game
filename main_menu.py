@@ -100,11 +100,16 @@ class PauseMenu(Frame):
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
         self.controller = controller
-        label = Label(self, text="This is Pause menu")
-        label.pack(side="top", fill="x", pady=10)
+        # label = Label(self, text="This is Pause menu")
+        # label.pack(side="top", fill="x", pady=10)
 
-        quit_button = ImageButton(self, image_path="images\menu_button.gif", command=lambda: controller.show_frame("MainMenu"))
-        quit_button.pack(pady=10)
+        # bg_image = PhotoImage(file='images\pause_menu\paused_background.gif')
+        # self.bg_label = Label(controller, image=bg_image)
+        # self.bg_label.image = bg_image
+        # self.bg_label.place(x=460, y=200)
+
+        # quit_button = ImageButton(self, image_path="images\menu_button.gif", command=lambda: controller.show_frame("MainMenu"))
+        # quit_button.pack(pady=10)
 
         # button = Button(
         #     self,
