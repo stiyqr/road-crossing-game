@@ -54,23 +54,16 @@ class MainMenu(Frame):
         Frame.__init__(self, parent)
         self.controller = controller
 
-        # bg_image = PhotoImage(file='images\opening_menu.gif')
-        # label = Label(self, text="This is the MainMenu page", image=bg_image)
-        # label.image = bg_image
-        # label.pack(side="top", fill="x", pady=10)
-
         bg_image = PhotoImage(file='images\plan_main_menu.gif')
-        self.bg_label = Label(self, image=bg_image)
+        self.bg_label = Label(controller, image=bg_image)
         self.bg_label.image = bg_image
-        self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+        self.bg_label.place(x=0, y=0)
 
-        play_button = ImageButton(self, image_path="images\play_button.gif", command=lambda: controller.show_frame("Game"))
-        play_button.place(relx=0.5, rely=0.6, anchor="center")
-        play_button.pack(pady=10)
+        play_button = ImageButton(controller, image_path="images\play_button.gif", command=self.show_game_frame)
+        play_button.place(x=467,y=238)
 
-        quit_button = ImageButton(self, image_path="images\pause_menu\close_menu.gif", command=lambda: controller.show_frame("PauseMenu"))
-        quit_button.place(relx=0.5, rely=0.6, anchor="center")
-        quit_button.pack(pady=10)
+        quit_button = ImageButton(controller, image_path="images\quit_button.gif", command=self.close_game_frame)
+        quit_button.place(x=464,y=369)
 
         # button1 = Button(
         #     self,
@@ -84,6 +77,13 @@ class MainMenu(Frame):
         # )
         # button1.pack()
         # button2.pack()
+        
+    def show_game_frame(self):
+        self.destroy()
+        self.controller.show_frame("Game")
+
+    def close_game_frame(self):
+        self.controller.destroy()
 
 
 class PauseMenu(Frame):
@@ -108,12 +108,22 @@ class ImageButton(Frame):
         super().__init__(parent)
 
         self.image = PhotoImage(file=image_path)
+        
+        self.image_button = Button(self, image=self.image, bd=0, cursor="hand2", command=command)
 
-        self.image_button = Button(self, image=self.image, bd=0, padx=0, pady=0, cursor="hand2", command=command)
+        self.image_button.config(width=350, height=100)
         self.image_button.pack()
 
         self.image_button.bind("<Enter>")
         self.image_button.bind("<ButtonRelease-1>")
+
+    def resize_image(image, maxsize):
+        r1 = image.size[0]/maxsize[0] # width ratio
+        r2 = image.size[1]/maxsize[1] # height ratio
+        ratio = max(r1, r2)
+        newsize = (int(image.size[0]/ratio), int(image.size[1]/ratio))
+        image = image.resize(newsize, Image.ANTIALIAS)
+        return image
 
         # self.image_button.bind("<Enter>", self.on_enter)
         # self.image_button.bind("<ButtonRelease-1>", self.button_unclicked)

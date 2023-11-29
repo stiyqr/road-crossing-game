@@ -2,7 +2,7 @@ from main_menu import Menu
 from game import SCREEN_HEIGHT, SCREEN_WIDTH
 
 main_app = Menu()
-#main_app.resize_window(width=SCREEN_WIDTH, height=SCREEN_HEIGHT)
+main_app.resize_window(width=SCREEN_WIDTH, height=SCREEN_HEIGHT)
 main_app.mainloop()
 
 
