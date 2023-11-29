@@ -42,6 +42,8 @@ class Game(Frame):
         screen.onkeypress(player.move_right, "d")
         screen.onkeypress(player.move_right, "Right")
 
+        screen.onkeypress(self.controller.show_frame("PauseMenu"), "Escape")
+
         # self.play_game()
         return {
             "screen": screen,
