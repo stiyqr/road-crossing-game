@@ -4,6 +4,8 @@ from game import Game, SCREEN_WIDTH, SCREEN_HEIGHT
 
 PLAY_BUTTON_PATH = "images\play_button.png"
 QUIT_BUTTON_PATH = "images\quit_button.png"
+HOME_BUTTON_PATH = "images\home_button.gif"
+RESTART_BUTTON_PATH = "images\\restart_button.gif"
 
 class Menu(Tk):
     def __init__(self, *args, **kwargs) -> None:
@@ -15,7 +17,9 @@ class Menu(Tk):
         self.current_score = 0
         self.button_images = {
             "play": PhotoImage(file=PLAY_BUTTON_PATH),
-            "quit": PhotoImage(file=QUIT_BUTTON_PATH)
+            "quit": PhotoImage(file=QUIT_BUTTON_PATH),
+            "home": PhotoImage(file=HOME_BUTTON_PATH),
+            "restart": PhotoImage(file=RESTART_BUTTON_PATH),
         }
 
         container = Frame(self)
@@ -28,7 +32,8 @@ class Menu(Tk):
             self.frames[page_name] = frame
             frame.grid(row=0, column=0, sticky="nsew")
 
-        self.show_frame("MainMenu")
+        #self.show_frame("MainMenu")
+        self.show_frame("ScoreMenu")
 
     def show_frame(self, page_name):
         frame = self.frames[page_name]
@@ -78,7 +83,7 @@ class MainMenu(Frame):
         )
         #start_game_btn.pack()
         start_game_btn.config(width=378, height=120)
-        start_game_btn.place(x=459,y=225)
+        start_game_btn.place(x=458,y=222)
         #start_game_btn.lift()
         
         exit_game_btn = Button(
@@ -119,12 +124,39 @@ class ScoreMenu(Frame):
         self.score = self.controller.current_score
         self.label = Label(self, text=f"Score: {self.score}")
         self.label.pack(side="top", fill="x", pady=10)
-        back_btn = Button(
+        # back_btn = Button(
+        #     self,
+        #     text="Go Back to Main Menu",
+        #     command=lambda: controller.show_frame("MainMenu"),
+        # )
+        # back_btn.pack()
+
+        #bg_image = PhotoImage(file='images\plan_game_over.gif')
+        bg_image = PhotoImage(file='assets\scene2.gif')
+        bg_label = Label(self, image=bg_image)
+        bg_label.image = bg_image
+        bg_label.pack()
+
+        gg_image = PhotoImage(file='images\game_over_menu.gif')
+        menu_label = Label(self, image=gg_image)
+        menu_label.image = gg_image
+        menu_label.place(x=300, y=132)
+
+        home_btn = Button(
             self,
-            text="Go Back to Main Menu",
+            image=controller.button_images["home"],
             command=lambda: controller.show_frame("MainMenu"),
+            bd=0
         )
-        back_btn.pack()
+        home_btn.place(x=517,y=485)
+
+        restart_btn = Button(
+            self,
+            image=controller.button_images["restart"],
+            command=lambda: controller.show_frame("MainMenu"),
+            bd=0
+        )
+        restart_btn.place(x=717,y=515)
 
     def update_score(self, score):
         self.score = score
