@@ -137,7 +137,7 @@ class ScoreMenu(Frame):
         # bg_label.image = bg_image
         # bg_label.pack()
 
-        gg_image = PhotoImage(file='images\plan_game_over.png')
+        gg_image = PhotoImage(file='images\game_over_menu.png')
         # gg_image = PhotoImage(file='images\game_over_menu.png')
         menu_label = Label(self, image=gg_image)
         menu_label.image = gg_image
@@ -150,8 +150,8 @@ class ScoreMenu(Frame):
             command=lambda: controller.show_frame("MainMenu"),
             bd=0
         )
-        home_btn.config(width=150, height=150)
-        home_btn.place(x=517,y=500)
+        home_btn.config(width=155, height=163)
+        home_btn.place(x=512,y=530)
 
         restart_btn = Button(
             self,
@@ -159,8 +159,8 @@ class ScoreMenu(Frame):
             command=lambda: controller.show_frame("MainMenu"),
             bd=0
         )
-        home_btn.config(width=150, height=150)
-        restart_btn.place(x=717,y=515)
+        restart_btn.config(width=155, height=163)
+        restart_btn.place(x=701,y=535)
 
     def update_score(self, score):
         self.score = score
