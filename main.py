@@ -4,7 +4,7 @@ from game import SCREEN_HEIGHT, SCREEN_WIDTH
 
 pygame.mixer.init()
 
-mp3_file_path = r'C:\Users\user\Downloads\road-crossing-game-UI-create\assets\song_playlist.mp3'
+mp3_file_path = r'C:\Users\user\Downloads\road-crossing-game-UI-create\assets\cute_song.mp3'
 pygame.mixer.music.load(mp3_file_path)
 pygame.mixer.music.play(-1)
 
