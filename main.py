@@ -14,6 +14,8 @@ main_app.mainloop()
 
 pygame.mixer.music.stop()
 
+# NOTE FOR SONG: PLEASE GO TO COMMAND PROMPT IN YOU COMPUTER TO INSTALL the pygame
+# write : pip install pygame
 
 # BACKGROUND_IMG = "assets/road2_600.gif"
 # PLAYER_IMG = "assets/Bear.gif"
