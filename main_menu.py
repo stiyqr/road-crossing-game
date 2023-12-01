@@ -4,8 +4,8 @@ from game import Game, SCREEN_WIDTH, SCREEN_HEIGHT
 
 PLAY_BUTTON_PATH = "images\play_button.png"
 QUIT_BUTTON_PATH = "images\quit_button.png"
-HOME_BUTTON_PATH = "images\home_button.gif"
-RESTART_BUTTON_PATH = "images\\restart_button.gif"
+HOME_BUTTON_PATH = "images\home_button.png"
+RESTART_BUTTON_PATH = "images\\restart_button.png"
 
 class Menu(Tk):
     def __init__(self, *args, **kwargs) -> None:
@@ -132,15 +132,17 @@ class ScoreMenu(Frame):
         # back_btn.pack()
 
         #bg_image = PhotoImage(file='images\plan_game_over.gif')
-        bg_image = PhotoImage(file='assets\scene2.gif')
-        bg_label = Label(self, image=bg_image)
-        bg_label.image = bg_image
-        bg_label.pack()
+        # bg_image = PhotoImage(file='assets\scene2.gif')
+        # bg_label = Label(self, image=bg_image)
+        # bg_label.image = bg_image
+        # bg_label.pack()
 
-        gg_image = PhotoImage(file='images\game_over_menu.gif')
+        gg_image = PhotoImage(file='images\plan_game_over.png')
+        # gg_image = PhotoImage(file='images\game_over_menu.png')
         menu_label = Label(self, image=gg_image)
         menu_label.image = gg_image
-        menu_label.place(x=300, y=132)
+        # menu_label.place(x=300, y=132)
+        menu_label.pack()
 
         home_btn = Button(
             self,
@@ -148,7 +150,8 @@ class ScoreMenu(Frame):
             command=lambda: controller.show_frame("MainMenu"),
             bd=0
         )
-        home_btn.place(x=517,y=485)
+        home_btn.config(width=150, height=150)
+        home_btn.place(x=517,y=500)
 
         restart_btn = Button(
             self,
@@ -156,6 +159,7 @@ class ScoreMenu(Frame):
             command=lambda: controller.show_frame("MainMenu"),
             bd=0
         )
+        home_btn.config(width=150, height=150)
         restart_btn.place(x=717,y=515)
 
     def update_score(self, score):
