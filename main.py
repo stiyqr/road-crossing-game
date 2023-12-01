@@ -1,9 +1,18 @@
+import pygame
 from main_menu import Menu
 from game import SCREEN_HEIGHT, SCREEN_WIDTH
+
+pygame.mixer.init()
+
+mp3_file_path = r'C:\Users\user\Downloads\road-crossing-game-UI-create\assets\song_playlist.mp3'
+pygame.mixer.music.load(mp3_file_path)
+pygame.mixer.music.play(-1)
 
 main_app = Menu()
 main_app.resize_window(width=SCREEN_WIDTH, height=SCREEN_HEIGHT)
 main_app.mainloop()
+
+pygame.mixer.music.stop()
 
 
 # BACKGROUND_IMG = "assets/road2_600.gif"
